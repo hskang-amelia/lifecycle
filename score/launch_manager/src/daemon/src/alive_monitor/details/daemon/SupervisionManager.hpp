@@ -11,10 +11,10 @@
  * SPDX-License-Identifier: Apache-2.0
  ********************************************************************************/
 
-#ifndef SWCLUSTERHANDLER_HPP_INCLUDED
-#define SWCLUSTERHANDLER_HPP_INCLUDED
+#ifndef SUPERVISIONMANAGER_HPP_INCLUDED
+#define SUPERVISIONMANAGER_HPP_INCLUDED
 
-#include "score/mw/launch_manager/alive_monitor/details/factory/IPhmFactory.hpp"
+#include "score/mw/launch_manager/alive_monitor/details/factory/IAliveWorkerFactory.hpp"
 #include "score/mw/launch_manager/alive_monitor/details/ifappl/DataStructures.hpp"
 #include "score/mw/launch_manager/alive_monitor/details/ifexm/ObservableEvent.hpp"
 #include "score/mw/launch_manager/alive_monitor/details/ifexm/ObservableEventReader.hpp"
@@ -23,17 +23,12 @@
 #include <string>
 #include <vector>
 
-namespace score
-{
-namespace mw::lifecycle
+namespace score::mw::lifecycle
 {
 
 class IRecoveryClient;
 
-namespace internal
-{
-
-namespace saf
+namespace internal::saf
 {
 
 // Forward declarations
@@ -56,7 +51,7 @@ namespace daemon
 using mw::lifecycle::internal::configuration::AliveSupervisionConfig;
 using mw::lifecycle::internal::configuration::ComponentAliveSupervision;
 
-/// @brief Supervision manager wraps the full PHM Supervision and Recovery Notification functionality.
+/// @brief Supervision manager wraps the full Supervision and Recovery Notification functionality.
 /// @details This class requests construction of all required objects to do the Supervisions and Recovery Notifications.
 /// It also provides an abstract interface to trigger the cyclic evaluation.
 class SupervisionManager
@@ -64,7 +59,7 @@ class SupervisionManager
   public:
     /// @brief Constructor
     /// @param[in] factory Factory moved into the object to construct required alive supervision components
-    explicit SupervisionManager(std::unique_ptr<factory::IPhmFactory> factory);
+    explicit SupervisionManager(std::unique_ptr<factory::IAliveWorkerFactory> factory);
 
     /// @brief Destroys the workers
     virtual ~SupervisionManager();
@@ -91,15 +86,18 @@ class SupervisionManager
     /// @param[in] size Number of supervised components
     void reserve(std::size_t size);
 
+    /// @brief Returns true if the number of alive supervisions constructed equals the reserved size
+    [[nodiscard]] bool full() const;
+
     /// @brief Construct required worker objects for provided component
     /// @details Construct the interfaces, checkpoints, supervisions and recovery notifications
     /// @param [in] id Identifier of the component
     /// @param [in] component_config Alive supervision configuration for the component
     /// @param [in] uid The configured uid of the component. Used for IPC access control
-    /// @param [in] f_recoveryClient_r       Interface to the launch manager for recovery
-    /// @param [in] f_processStateReader_r   Process state reader object for PHM daemon
+    /// @param [in] f_recoveryClient_r       Interface for sending recovery request
+    /// @param [in] f_processStateReader_r   Process state reader object for Alive Monitor
     /// @return                              Construction is successful (true), otherwise failure (false)
-    bool constructWorker(
+    [[nodiscard]] bool constructWorker(
         const IdentifierHash& id,
         const ComponentAliveSupervision& component_config,
         const uid_t uid,
@@ -109,7 +107,7 @@ class SupervisionManager
     /// @brief Perform cyclic execution
     /// @details Perform cyclic execution required for alive supervision
     /// @param [in] f_syncTimestamp   Timestamp for cyclic synchronization
-    void performCyclicTriggers(const timers::NanoSecondType f_syncTimestamp);
+    void performCyclicTriggers(const std::chrono::nanoseconds f_syncTimestamp);
 
     /// @brief Check whether any alive supervision failed to enqueue a recovery request
     /// @return True if any alive supervision recovery request has failed
@@ -119,12 +117,12 @@ class SupervisionManager
     /// @brief Check interfaces for new data
     /// @details All interfaces created during construction will be checked for new data.
     /// @param [in] f_syncTimestamp   Timestamp for cyclic synchronization
-    void checkInterfaceForNewData(const timers::NanoSecondType f_syncTimestamp);
+    void checkInterfaceForNewData(const std::chrono::nanoseconds f_syncTimestamp);
 
     /// @brief Evaluate supervisions
     /// @details Evaluate all supervisions created during construction.
     /// @param [in] f_syncTimestamp   Timestamp for cyclic synchronization
-    void evaluateSupervisions(const timers::NanoSecondType f_syncTimestamp);
+    void evaluateSupervisions(const std::chrono::nanoseconds f_syncTimestamp);
 
     /// Vector of Process states
     std::vector<ifexm::ObservableEvent> processStates;
@@ -141,13 +139,14 @@ class SupervisionManager
     /// Vector of Alive Supervisions
     std::vector<supervision::Alive> aliveSupervisions;
 
-    std::unique_ptr<factory::IPhmFactory> flatCfgFactory;
+    std::unique_ptr<factory::IAliveWorkerFactory> flatCfgFactory;
+
+    /// @brief The number of alive supervisions we expect to successfully construct
+    std::size_t capacity{0};
 };
 
 }  // namespace daemon
-}  // namespace saf
-}  // namespace internal
-}  // namespace mw::lifecycle
-}  // namespace score
+}  // namespace internal::saf
+}  // namespace score::mw::lifecycle
 
 #endif

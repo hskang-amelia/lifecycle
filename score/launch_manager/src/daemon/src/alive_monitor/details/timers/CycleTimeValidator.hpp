@@ -18,13 +18,7 @@
 
 #include "score/mw/launch_manager/alive_monitor/details/timers/OsClockInterface.hpp"
 
-namespace score
-{
-namespace mw::lifecycle::internal
-{
-namespace saf
-{
-namespace timers
+namespace score::mw::lifecycle::internal::saf::timers
 {
 
 /// @brief Perform validations on the cycle time configured.
@@ -34,7 +28,7 @@ class CycleTimeValidator
     /// @brief Get the monotonic clock accuracy in nanoseconds
     /// @param[in] f_clock_sys Interface to access the system clock functionality
     /// @return nanoseconds or -1 if receiving the clock resolution fails
-    static int64_t getMonotonicClockAccuracy(
+    static std::chrono::nanoseconds getMonotonicClockAccuracy(
         const score::mw::lifecycle::internal::saf::timers::OsClockInterface& f_clock_sys) noexcept(true);
 
     /// @brief Adjust a given time interval based on the clock accuracy of
@@ -45,14 +39,11 @@ class CycleTimeValidator
     /// - the requested interval if it's actually greater than the system's clock accuracyl
     /// - clock accuracy if the requested time interval is < clock accuracy
     /// - -1 if retrieving the system's clock resolution failed
-    static int64_t adjustCycleTimeOnClockAccuracy(
-        const int64_t f_requested_interval_ns,
+    static std::chrono::nanoseconds adjustCycleTimeOnClockAccuracy(
+        const std::chrono::nanoseconds f_requested_interval_ns,
         const score::mw::lifecycle::internal::saf::timers::OsClockInterface& f_clock_sys) noexcept(true);
 };
 
-}  // namespace timers
-}  // namespace saf
-}  // namespace mw::lifecycle::internal
-}  // namespace score
+}  // namespace score::mw::lifecycle::internal::saf::timers
 
 #endif

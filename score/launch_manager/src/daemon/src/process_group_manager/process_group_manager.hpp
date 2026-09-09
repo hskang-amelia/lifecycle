@@ -18,12 +18,14 @@
 #include <ctime>
 #include <memory>
 
+#include "score/mw/launch_manager/alive_monitor/IAliveMonitor.hpp"
 #include "score/mw/launch_manager/common/concurrency/mpmc_concurrent_queue.hpp"
 #include "score/mw/launch_manager/common/concurrency/thread_pool.hpp"
 #include "score/mw/launch_manager/common/constants.hpp"
 #include "score/mw/launch_manager/common/identifier_hash.hpp"
 #include "score/mw/launch_manager/configuration/config.hpp"
 #include "score/mw/launch_manager/control/control_client_channel.hpp"
+#include "score/mw/launch_manager/osal/wait_for_file.hpp"
 #include "score/mw/launch_manager/process_group_manager/details/component_event_queue.hpp"
 #include "score/mw/launch_manager/process_group_manager/details/graph.hpp"
 #include "score/mw/launch_manager/process_group_manager/details/itransition_result_publisher.hpp"
@@ -32,10 +34,8 @@
 #include "score/mw/launch_manager/process_group_manager/details/process_launcher.hpp"
 #include "score/mw/launch_manager/process_group_manager/details/process_monitor.hpp"
 #include "score/mw/launch_manager/process_group_manager/details/safe_process_map.hpp"
-#include "score/mw/launch_manager/process_group_manager/ialive_monitor_thread.hpp"
 #include "score/mw/launch_manager/process_group_manager/iprocess.hpp"
 #include "score/mw/launch_manager/recovery_client/recovery_client.hpp"
-#include "score/mw/launch_manager/supervision_control_client/isupervision_control_notifier.hpp"
 #include "score/mw/launch_manager/watchdog/IWatchdogIf.hpp"
 
 namespace score::mw::lifecycle::internal
@@ -72,11 +72,11 @@ class ProcessGroupManager final : public ITransitionResultPublisher
     /// @param watchdog A unique pointer to an IWatchdogIf instance serviced during the main loop. May be nullptr in
     /// legacy configuration where no watchdog is wired.
     ProcessGroupManager(
-        configuration::Config&& config,
-        std::unique_ptr<IAliveMonitorThread> alive_monitor_thread,
+        GraphConfig&& config,
+        std::unique_ptr<saf::daemon::IAliveMonitor> alive_monitor,
         std::shared_ptr<IRecoveryClient> recovery_client,
-        std::unique_ptr<score::mw::lifecycle::ISupervisionControlNotifier> supervision_control_notifier,
-        std::unique_ptr<score::mw::lifecycle::internal::watchdog::IWatchdogIf> watchdog);
+        std::unique_ptr<score::mw::lifecycle::internal::watchdog::IWatchdogIf> watchdog,
+        std::optional<configuration::WatchdogConfig>&& watchdog_config);
 
     /// @brief Initializes the process group manager.
     /// Sets up a signal handler for SIGINT and SIGTERM so that the main loop of
@@ -107,9 +107,9 @@ class ProcessGroupManager final : public ITransitionResultPublisher
 
     /// @brief Get a node corresponding to the given process group and process index
     /// @param pg_index The index of the process group in the list of groups managed by this manager
-    /// @param process_index The index of the process in the list of processes in the process group
+    /// @param process_id The identifier of the process
     /// @return nullptr if the node does not exist, otherwise a pointer to the corresponding node.
-    ProcessInfoNode* getProcessInfoNode(uint32_t pg_index, uint32_t process_index);
+    ProcessInfoNode* getProcessInfoNode(uint32_t pg_index, IdentifierHash process_id);
 
     /// @brief set the initial machine group state change result, called by graph when the transition completes
     /// @param result the result to save; it can only be saved once
@@ -259,10 +259,16 @@ class ProcessGroupManager final : public ITransitionResultPublisher
     bool initializeControlClientHandler();
 
     /// @brief The configuration object associated with the ProcessGroupManager.
-    configuration::Config configuration_;
+    GraphConfig configuration_;
+
+    /// @brief The configuration object associated with the watchdog.
+    std::optional<configuration::WatchdogConfig> watchdog_config_;
 
     /// @brief The process interface object associated with the ProcessGroupManager.
     osal::ProcessLauncher process_interface_;
+
+    /// @brief Waits for FileState ready conditions; injected into ProcessInfoNode via ProcessHandling.
+    osal::FileWaiter file_waiter_;
 
     /// @brief Shared pointer to the SafeProcessMap object.
     std::shared_ptr<SafeProcessMap> process_map_;
@@ -279,10 +285,7 @@ class ProcessGroupManager final : public ITransitionResultPublisher
     /// @brief Pointer to the gaph.
     std::shared_ptr<Graph> graph_{nullptr};
 
-    /// @brief Process state notifier object used to send data to PHM
-    std::unique_ptr<score::mw::lifecycle::ISupervisionControlNotifier> supervision_control_notifier_;
-
-    std::unique_ptr<IAliveMonitorThread> alive_monitor_thread_;
+    std::unique_ptr<saf::daemon::IAliveMonitor> alive_monitor_;
 
     std::unique_ptr<ProcessMonitor> process_monitor_;
 

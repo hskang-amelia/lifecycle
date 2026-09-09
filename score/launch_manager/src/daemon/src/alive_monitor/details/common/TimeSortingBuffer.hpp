@@ -13,19 +13,14 @@
 #ifndef TIMESORTINGBUFFER_HPP_INCLUDED
 #define TIMESORTINGBUFFER_HPP_INCLUDED
 
+#include <chrono>
 #include <cstdint>
 #include <type_traits>
 
 #include "score/mw/launch_manager/alive_monitor/details/common/FixedSizeVector.hpp"
 #include "score/mw/launch_manager/alive_monitor/details/timers/Timers_OsClock.hpp"
 
-namespace score
-{
-namespace mw::lifecycle::internal
-{
-namespace saf
-{
-namespace common
+namespace score::mw::lifecycle::internal::saf::common
 {
 
 /// Time Sorting Buffer template class
@@ -73,9 +68,7 @@ class TimeSortingBuffer
     /// @return                     Success of push (true) sufficient space in buffer was available
     /* RULECHECKER_comment(0, 3, check_cheap_to_copy_in_parameter, "For template argument f_element_r, it is not \
     possible to classify cheap_to_copy or expensive_to_copy without referring original object.", true_no_defect) */
-    bool push(
-        const TimeSortedElementType& f_element_r,
-        const score::mw::lifecycle::internal::saf::timers::NanoSecondType f_timestamp)
+    bool push(const TimeSortedElementType& f_element_r, const std::chrono::nanoseconds f_timestamp)
     {
         bool isSuccess{false};
         SortChainElement newElement{nullptr, nullptr, f_element_r, f_timestamp};
@@ -140,8 +133,7 @@ class TimeSortingBuffer
             nullptr};                       // Pointer to previous element, null pointer means first element (oldest)
         SortChainElement* next_p{nullptr};  // Pointer to next element, null pointer means last element (latest)
         TimeSortedElementType element{};    // Element to be sorted
-        score::mw::lifecycle::internal::saf::timers::NanoSecondType timestamp{
-            0U};  // Timestamp used for sorting the elements
+        std::chrono::nanoseconds timestamp{0U};  // Timestamp used for sorting the elements
     };
 
     /// Sort elements
@@ -230,9 +222,6 @@ class TimeSortingBuffer
     SortChainElement* lastReportedElement_p = nullptr;
 };
 
-}  // namespace common
-}  // namespace saf
-}  // namespace mw::lifecycle::internal
-}  // namespace score
+}  // namespace score::mw::lifecycle::internal::saf::common
 
 #endif

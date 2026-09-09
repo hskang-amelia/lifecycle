@@ -20,7 +20,7 @@
 namespace score::mw::lifecycle::internal::saf::daemon
 {
 
-SupervisionManager::SupervisionManager(std::unique_ptr<factory::IPhmFactory> factory)
+SupervisionManager::SupervisionManager(std::unique_ptr<factory::IAliveWorkerFactory> factory)
     : processStates{},
       aliveIfIpcs{},
       aliveInterfaces{},
@@ -32,8 +32,14 @@ SupervisionManager::SupervisionManager(std::unique_ptr<factory::IPhmFactory> fac
 
 SupervisionManager::~SupervisionManager() = default;
 
+bool SupervisionManager::full() const
+{
+    return aliveSupervisions.size() >= capacity;
+}
+
 void SupervisionManager::reserve(std::size_t size)
 {
+    capacity = size;
     processStates.reserve(size);
     aliveIfIpcs.reserve(size);
     aliveInterfaces.reserve(size);
@@ -73,7 +79,7 @@ bool SupervisionManager::constructWorker(
     return true;
 }
 
-void SupervisionManager::checkInterfaceForNewData(const timers::NanoSecondType f_syncTimestamp)
+void SupervisionManager::checkInterfaceForNewData(const std::chrono::nanoseconds f_syncTimestamp)
 {
     for (auto& aliveInterface : aliveInterfaces)
     {
@@ -81,7 +87,7 @@ void SupervisionManager::checkInterfaceForNewData(const timers::NanoSecondType f
     }
 }
 
-void SupervisionManager::evaluateSupervisions(const timers::NanoSecondType f_syncTimestamp)
+void SupervisionManager::evaluateSupervisions(const std::chrono::nanoseconds f_syncTimestamp)
 {
     for (auto& alive : aliveSupervisions)
     {
@@ -101,7 +107,7 @@ bool SupervisionManager::hasAnyRecoveryEnqueueFailed() const noexcept
     return false;
 }
 
-void SupervisionManager::performCyclicTriggers(const timers::NanoSecondType f_syncTimestamp)
+void SupervisionManager::performCyclicTriggers(const std::chrono::nanoseconds f_syncTimestamp)
 {
     checkInterfaceForNewData(f_syncTimestamp);
     evaluateSupervisions(f_syncTimestamp);

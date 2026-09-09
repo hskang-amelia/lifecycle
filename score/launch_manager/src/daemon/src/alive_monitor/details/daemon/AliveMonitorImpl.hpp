@@ -15,57 +15,72 @@
 
 #include <atomic>
 #include <memory>
+#include <thread>
 
-#include "score/mw/launch_manager/alive_monitor/details/daemon/IAliveMonitor.hpp"
+#include "score/mw/launch_manager/alive_monitor/IAliveMonitor.hpp"
+#include "score/mw/launch_manager/alive_monitor/details/daemon/CyclicExecutor.hpp"
 #include "score/mw/launch_manager/configuration/config.hpp"
 
-namespace score
-{
-namespace mw::lifecycle
+namespace score::mw::lifecycle
 {
 
 class IRecoveryClient;
 
-namespace internal
-{
-
-namespace saf
-{
-
-namespace daemon
+namespace internal::saf::daemon
 {
 
 using SptrIRecoveryClient = std::shared_ptr<score::mw::lifecycle::IRecoveryClient>;
-using UptrISupervisionControlReceiver = std::unique_ptr<score::mw::lifecycle::ISupervisionControlReceiver>;
-using UptrPhmDaemon = std::unique_ptr<score::mw::lifecycle::internal::saf::daemon::PhmDaemon>;
-using OsClock = score::mw::lifecycle::internal::saf::timers::OsClockInterface;
-using Config = score::mw::lifecycle::internal::configuration::Config;
-using score::mw::lifecycle::internal::configuration::AliveSupervisionConfig;
+using UptrCyclicExecutor = std::unique_ptr<score::mw::lifecycle::internal::saf::daemon::CyclicExecutor>;
+using OsClock = internal::saf::timers::OsClockInterface;
+using configuration::AliveSupervisionConfig;
 
 class AliveMonitorImpl : public IAliveMonitor
 {
+    static_assert(
+        std::is_trivially_copyable_v<AliveSupervisionConfig>,
+        "AliveSupervisionConfig is copied to this object since it is trivially copyable. If this changes, it should be "
+        "passed by move instead");
+
   public:
     AliveMonitorImpl(
         SptrIRecoveryClient recovery_client,
-        UptrISupervisionControlReceiver observable_event_receiver,
-        const Config& config);
+        AliveSupervisionConfig config,
+        const std::size_t supervised_components);
 
-    EInitCode init() noexcept override;
+    /// @brief @see IAliveMonitor definition
+    void startMonitoring() noexcept override;
 
-    bool run(std::atomic_bool& cancel_thread) noexcept override;
+    /// @brief @see IAliveMonitor definition
+    void stopMonitoring() noexcept override;
+
+    /// @brief @see IAliveMonitor definition
+    [[nodiscard]] ISupervisionFactory& getSupervisionFactory() const noexcept override;
+
+    /// @brief @see IAliveMonitor definition
+    [[nodiscard]] bool init() noexcept override;
 
   private:
+    /// @brief Run the AliveMonitor functionality in a cyclic manner until cancellation is requested.
+    /// @param cancel_thread Atomic boolean flag to signal thread cancellation.
+    bool threadFn(std::atomic_bool& cancel_thread) noexcept;
+
+    /// @brief Client to send recovery requests to.
     SptrIRecoveryClient m_recovery_client{nullptr};
-    UptrPhmDaemon m_daemon{nullptr};
+    /// @brief Daemon responsible for alive supervisions.
+    UptrCyclicExecutor m_daemon{nullptr};
+    /// @brief Interface used to retrieve time.
     OsClock m_osClock{};
-    UptrISupervisionControlReceiver m_observable_event_receiver;
-    const Config& m_config;
+    /// @brief Parameters for alive supervision.
+    AliveSupervisionConfig config_;
+    /// @brief Thread in which the alive monitor shall run.
+    std::thread alive_monitor_thread_{};
+    /// @brief If true, exit the alive monitor thread's loop.
+    std::atomic_bool stop_thread_{false};
+    /// @brief The number of components that require alive supervision.
+    std::size_t supervised_components_;
 };
 
-}  // namespace daemon
-}  // namespace saf
-}  // namespace internal
-}  // namespace mw::lifecycle
-}  // namespace score
+}  // namespace internal::saf::daemon
+}  // namespace score::mw::lifecycle
 
 #endif

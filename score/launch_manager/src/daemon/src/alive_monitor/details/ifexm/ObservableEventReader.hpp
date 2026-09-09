@@ -17,17 +17,12 @@
 #include <map>
 
 #include "score/mw/launch_manager/alive_monitor/details/ifexm/ObservableEvent.hpp"
+#include "score/mw/launch_manager/alive_monitor/details/ifexm/supervision_event.hpp"
 #include "score/mw/launch_manager/alive_monitor/details/timers/Timers_OsClock.hpp"
-#include "score/mw/launch_manager/supervision_control_client/isupervision_control_receiver.hpp"
-#include "score/mw/launch_manager/supervision_control_client/supervision_event.hpp"
 
-namespace score
-{
-namespace mw::lifecycle::internal
-{
-namespace saf
-{
-namespace ifexm
+#include "score/result/result.h"
+
+namespace score::mw::lifecycle::internal::saf::ifexm
 {
 
 /// @brief Observable Event reader
@@ -36,12 +31,9 @@ namespace ifexm
 class ObservableEventReader
 {
   public:
-    using LcmSupervisionEvent = score::mw::lifecycle::SupervisionEvent;
-    using LcmSupervisionControlReceiver = score::mw::lifecycle::ISupervisionControlReceiver;
-
     /// @brief Constructor
-    /// @param [in] f_observable_event_receiver   Process state receiver implementation
-    ObservableEventReader(std::unique_ptr<LcmSupervisionControlReceiver> f_observable_event_receiver);
+    /// @param [in] f_observable_event_receiver   Shared pointer to the ring buffer used to receive supervision events
+    explicit ObservableEventReader(std::shared_ptr<SupervisionBufferType> f_observable_event_receiver);
 
     /// @brief No Copy Constructor
     ObservableEventReader(const ObservableEventReader&) = delete;
@@ -69,17 +61,21 @@ class ObservableEventReader
     /// @details Distribute supervision events to the registered Observable Event classes
     /// @param [in] f_syncTimestamp   Timestamp for cyclic synchronization
     /// @return     true (successful distribution), false (failed distribution)
-    bool distributeChanges(const timers::NanoSecondType f_syncTimestamp) noexcept;
+    bool distributeChanges(const std::chrono::nanoseconds f_syncTimestamp) noexcept;
 
   private:
     /// @brief Push update for changed registered process
     /// @param [in] f_event              Supervision event for which push update is needed
     /// @param [in] f_syncTimestamp      Timestamp for cyclic synchronization
     /// @return     true (sync timestamp is reached), false (sync timestamp is not yet reached)
-    bool pushUpdateTill(const LcmSupervisionEvent& f_event, const timers::NanoSecondType f_syncTimestamp) noexcept;
+    bool pushUpdateTill(const SupervisionEvent& f_event, const std::chrono::nanoseconds f_syncTimestamp) noexcept;
 
-    /// @brief Process state receiver for HM thread
-    std::unique_ptr<LcmSupervisionControlReceiver> processStateReceiverHM;
+    /// @brief Returns a queued SupervisionEvent that has not yet been parsed.
+    /// @returns Result containing SupervisionEvent in case of success, or ExecError in case of failure.
+    score::Result<std::optional<SupervisionEvent>> getNextSupervisionEvent() noexcept;
+
+    /// @brief Ring buffer through which supervision events are received
+    std::shared_ptr<SupervisionBufferType> buffer_;
 
     /// @brief Map for process id and observable event object
     std::map<IdentifierHash, ObservableEvent*> processStateMap{};
@@ -91,9 +87,6 @@ class ObservableEventReader
     ObservableEvent* lastChangedProcess_p{nullptr};
 };
 
-}  // namespace ifexm
-}  // namespace saf
-}  // namespace mw::lifecycle::internal
-}  // namespace score
+}  // namespace score::mw::lifecycle::internal::saf::ifexm
 
 #endif
