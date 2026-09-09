@@ -174,6 +174,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../module/index.html">
+    Lifecycle Module
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../safety_mgt/index.html">
     Safety Management
   </a>
@@ -186,13 +193,6 @@
   </a>
 </li>
 
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../release/index.html">
-    Release notes
-  </a>
-</li>
-
             <li class="nav-item dropdown">
                 <button class="btn dropdown-toggle nav-item" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false"
@@ -202,8 +202,15 @@
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../../../verification_report/statistics.html">
-    Verification Statistics
+  <a class="nav-link dropdown-item nav-internal" href="../../../release/index.html">
+    Release notes
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../verification_report/index.html">
+    Verification Report
   </a>
 </li>
 
@@ -347,6 +354,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../module/index.html">
+    Lifecycle Module
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../../../safety_mgt/index.html">
     Safety Management
   </a>
@@ -368,8 +382,8 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../../../verification_report/statistics.html">
-    Verification Statistics
+  <a class="nav-link nav-internal" href="../../../verification_report/index.html">
+    Verification Report
   </a>
 </li>
 
@@ -544,9 +558,53 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="component-launch-manager-requirements">
+  
+<style>
+.score-testcase-result {
+  font-weight: bold;
+}
+.score-testcase-result--passed {
+  color: #146c2e;
+}
+.score-testcase-result--failed {
+  color: #b42318;
+}
+.score-testcase-result--skipped {
+  color: #8a5300;
+}
+.score-testcase-result--disabled {
+  color: #5f6368;
+}
+html[data-theme="dark"] .score-testcase-result--passed {
+  color: #7ee787;
+}
+html[data-theme="dark"] .score-testcase-result--failed {
+  color: #ff7b72;
+}
+html[data-theme="dark"] .score-testcase-result--skipped {
+  color: #d29922;
+}
+html[data-theme="dark"] .score-testcase-result--disabled {
+  color: #c4cad2;
+}
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .score-testcase-result--passed {
+    color: #7ee787;
+  }
+  html:not([data-theme="light"]) .score-testcase-result--failed {
+    color: #ff7b72;
+  }
+  html:not([data-theme="light"]) .score-testcase-result--skipped {
+    color: #d29922;
+  }
+  html:not([data-theme="light"]) .score-testcase-result--disabled {
+    color: #c4cad2;
+  }
+}
+</style>
+<section id="component-launch-manager-requirements">
 <h1>Component Launch Manager Requirements<a class="headerlink" href="#component-launch-manager-requirements" title="Link to this heading">#</a></h1>
-<div class="need_container docutils container" id="SNCB-1988ff8c">
+<div class="need_container docutils container" id="SNCB-f087bba7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__launch_manager_requirements">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -591,7 +649,7 @@
 </div>
 <section id="launching-processes">
 <h2>Launching Processes<a class="headerlink" href="#launching-processes" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-5e865dc3">
+<div class="need_container docutils container" id="SNCB-2c818e81">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__process_input_output">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -637,7 +695,7 @@ multiple <a class="reference internal" href="../../../features/lifecycle/glossar
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0dac23e8">
+<div class="need_container docutils container" id="SNCB-13c53fd1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__process_launch_args">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -657,7 +715,7 @@ multiple <a class="reference internal" href="../../../features/lifecycle/glossar
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/process_launch_args/process_launch_args.py#L19">test_process_launch_args</a><em>; </em></span></span></div>
+<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/process_launch_args/process_launch_args.py#L19">test_process_launch_args<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em></span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="external_link reference external" href="https://eclipse-score.github.io/score/main/features/lifecycle/requirements/index.html#feat_req__lifecycle__custom_cond_support">feat_req__lifecycle__custom_cond_support</a></span></span></div>
@@ -685,7 +743,7 @@ given set of arguments.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d82455a4">
+<div class="need_container docutils container" id="SNCB-b2279fc3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__debug_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -731,7 +789,7 @@ given set of debug arguments in debug mode.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-88ff3b46">
+<div class="need_container docutils container" id="SNCB-42ca65e3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__support_held_state">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -777,7 +835,7 @@ waiting for a debugger connection.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a32200dc">
+<div class="need_container docutils container" id="SNCB-b4cd9fa6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__uid_gid_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -797,7 +855,7 @@ waiting for a debugger connection.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/sandbox_options/sandbox_options.py#L113">test_sandbox_options</a><em>; </em></span></span></div>
+<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/sandbox_options/sandbox_options.py#L113">test_sandbox_options<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em></span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="external_link reference external" href="https://eclipse-score.github.io/score/main/features/lifecycle/requirements/index.html#feat_req__lifecycle__custom_cond_support">feat_req__lifecycle__custom_cond_support</a></span></span></div>
@@ -824,7 +882,7 @@ given <a class="reference internal" href="../../../features/lifecycle/glossary.h
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c6cf94cb">
+<div class="need_container docutils container" id="SNCB-963092da">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__launch_priority_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -844,7 +902,7 @@ given <a class="reference internal" href="../../../features/lifecycle/glossary.h
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/sandbox_options/sandbox_options.py#L113">test_sandbox_options</a><em>; </em></span></span></div>
+<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/sandbox_options/sandbox_options.py#L113">test_sandbox_options<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em></span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="external_link reference external" href="https://eclipse-score.github.io/score/main/features/lifecycle/requirements/index.html#feat_req__lifecycle__custom_cond_support">feat_req__lifecycle__custom_cond_support</a></span></span></div>
@@ -871,7 +929,7 @@ given priority.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-475fd402">
+<div class="need_container docutils container" id="SNCB-8d3ba927">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__cwd_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -891,7 +949,7 @@ given priority.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/sandbox_options/sandbox_options.py#L113">test_sandbox_options</a><em>; </em></span></span></div>
+<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/sandbox_options/sandbox_options.py#L113">test_sandbox_options<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em></span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="external_link reference external" href="https://eclipse-score.github.io/score/main/features/lifecycle/requirements/index.html#feat_req__lifecycle__custom_cond_support">feat_req__lifecycle__custom_cond_support</a></span></span></div>
@@ -918,7 +976,7 @@ given <a class="reference internal" href="../../../features/lifecycle/glossary.h
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a044527d">
+<div class="need_container docutils container" id="SNCB-aa83f548">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__terminal_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -964,7 +1022,7 @@ session leader.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c75a80cf">
+<div class="need_container docutils container" id="SNCB-85a67647">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__std_handle_redir">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1010,7 +1068,7 @@ redirection.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d415c3c4">
+<div class="need_container docutils container" id="SNCB-4b974078">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__secpol_non_root">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1056,7 +1114,7 @@ policy as non-root.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-03746d02">
+<div class="need_container docutils container" id="SNCB-eff2ee8e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__retries_configurable">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1076,7 +1134,7 @@ policy as non-root.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/crash_on_startup/crash_on_startup.py#L22">test_crash_on_startup</a><em>; </em></span></span></div>
+<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/crash_on_startup/crash_on_startup.py#L22">test_crash_on_startup<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em></span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="external_link reference external" href="https://eclipse-score.github.io/score/main/features/lifecycle/requirements/index.html#feat_req__lifecycle__custom_cond_support">feat_req__lifecycle__custom_cond_support</a></span></span></div>
@@ -1103,7 +1161,7 @@ case error occurs during startup of a component (e.g. file not available) occurs
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-33a4f0e3">
+<div class="need_container docutils container" id="SNCB-7873ff92">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__capability_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1149,7 +1207,7 @@ with configured OS-specific capabilities and privileges.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b2cea6c1">
+<div class="need_container docutils container" id="SNCB-910178ce">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__fd_inheritance">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1195,7 +1253,7 @@ given <a class="reference internal" href="../../../features/lifecycle/glossary.h
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8fe4eb4f">
+<div class="need_container docutils container" id="SNCB-eca99408">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__support_secpol_type">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1241,7 +1299,7 @@ given security policy.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-be6e727c">
+<div class="need_container docutils container" id="SNCB-96e42251">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__supplementary_groups">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1261,7 +1319,7 @@ given security policy.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/sandbox_options/sandbox_options.py#L113">test_sandbox_options</a><em>; </em></span></span></div>
+<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/sandbox_options/sandbox_options.py#L113">test_sandbox_options<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em></span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="external_link reference external" href="https://eclipse-score.github.io/score/main/features/lifecycle/requirements/index.html#feat_req__lifecycle__custom_cond_support">feat_req__lifecycle__custom_cond_support</a></span></span></div>
@@ -1288,7 +1346,7 @@ given set of supplementary groups.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7561e105">
+<div class="need_container docutils container" id="SNCB-d1777ed6">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__scheduling_policy">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1308,7 +1366,7 @@ given set of supplementary groups.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/sandbox_options/sandbox_options.py#L113">test_sandbox_options</a><em>; </em></span></span></div>
+<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/sandbox_options/sandbox_options.py#L113">test_sandbox_options<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em></span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="external_link reference external" href="https://eclipse-score.github.io/score/main/features/lifecycle/requirements/index.html#feat_req__lifecycle__custom_cond_support">feat_req__lifecycle__custom_cond_support</a></span></span></div>
@@ -1335,7 +1393,7 @@ certain scheduling policy.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b9537c97">
+<div class="need_container docutils container" id="SNCB-4d00842d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__runmask_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1381,7 +1439,7 @@ given runmask.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-8d5a8d6e">
+<div class="need_container docutils container" id="SNCB-b3fcf93a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__aslr_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1427,7 +1485,7 @@ given runmask.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-37cde801">
+<div class="need_container docutils container" id="SNCB-de38f326">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__process_rlimit_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1473,7 +1531,7 @@ given set of system resource limits (rlimit).</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b3061832">
+<div class="need_container docutils container" id="SNCB-d33e0d59">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__detach_parent_process">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1522,7 +1580,7 @@ detach from parent.</p></td>
 </section>
 <section id="conditional-launching">
 <h2>Conditional Launching<a class="headerlink" href="#conditional-launching" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-d4b5c1e9">
+<div class="need_container docutils container" id="SNCB-5143e0aa">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__cond_process_start">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1569,7 +1627,7 @@ executed before.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5244ec05">
+<div class="need_container docutils container" id="SNCB-25be5a44">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__total_wait_time_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1615,7 +1673,7 @@ total wait time for launch conditions to be satisfied.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-b22a201f">
+<div class="need_container docutils container" id="SNCB-d20a414f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__polling_interval">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1661,7 +1719,7 @@ total wait time for launch conditions to be satisfied.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6606b27f">
+<div class="need_container docutils container" id="SNCB-4836b2fc">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__validate_conditions">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1706,7 +1764,7 @@ total wait time for launch conditions to be satisfied.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-44a9ef07">
+<div class="need_container docutils container" id="SNCB-30474bf3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__validation_conditions">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1751,7 +1809,7 @@ total wait time for launch conditions to be satisfied.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1e4bbd53">
+<div class="need_container docutils container" id="SNCB-56456f3a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__launcher_status_storage">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1796,7 +1854,7 @@ total wait time for launch conditions to be satisfied.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4a3e176b">
+<div class="need_container docutils container" id="SNCB-524f317f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__condition_check_method">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1841,7 +1899,7 @@ total wait time for launch conditions to be satisfied.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-95a99ddf">
+<div class="need_container docutils container" id="SNCB-d0252103">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__config_actions_cond">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1886,7 +1944,7 @@ total wait time for launch conditions to be satisfied.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2e93d7d4">
+<div class="need_container docutils container" id="SNCB-dd9d7cb7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__path_condition_check">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1906,6 +1964,7 @@ total wait time for launch conditions to be satisfied.</p></td>
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
+<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/ready_conditions/file_state/exists/ready_condition_file.py#L19">test_ready_condition_file<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/ready_conditions/file_state/not_existing/ready_condition_file_not_existing.py#L19">test_ready_condition_file_not_existing<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em></span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="external_link reference external" href="https://eclipse-score.github.io/score/main/features/lifecycle/requirements/index.html#feat_req__lifecycle__conditional_startup">feat_req__lifecycle__conditional_startup</a></span></span></div>
@@ -1931,7 +1990,7 @@ total wait time for launch conditions to be satisfied.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-2752f429">
+<div class="need_container docutils container" id="SNCB-3a83009e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__env_variable_cond_check">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -1976,7 +2035,7 @@ total wait time for launch conditions to be satisfied.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f536529e">
+<div class="need_container docutils container" id="SNCB-ccecc37d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__dependency_check">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2021,7 +2080,7 @@ total wait time for launch conditions to be satisfied.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-19b2c96d">
+<div class="need_container docutils container" id="SNCB-66cc997f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__check_dependency_exec">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2066,7 +2125,7 @@ total wait time for launch conditions to be satisfied.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-620359ff">
+<div class="need_container docutils container" id="SNCB-200d81f5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__define_swc_dependencies">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2114,7 +2173,7 @@ total wait time for launch conditions to be satisfied.</p></td>
 </section>
 <section id="process-management">
 <h2>Process Management<a class="headerlink" href="#process-management" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-e7bced71">
+<div class="need_container docutils container" id="SNCB-69b89f43">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__drop_supervsion">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2160,7 +2219,7 @@ and failure reaction activities of <a class="reference internal" href="../../../
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-0835e15d">
+<div class="need_container docutils container" id="SNCB-03dd6dd7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__multi_start_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2205,7 +2264,7 @@ and failure reaction activities of <a class="reference internal" href="../../../
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-c4611fea">
+<div class="need_container docutils container" id="SNCB-f7bb6958">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__consistent_dependencies">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2250,7 +2309,7 @@ and failure reaction activities of <a class="reference internal" href="../../../
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-abaef0f3">
+<div class="need_container docutils container" id="SNCB-d6f19751">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__stop_process_dependents">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2295,7 +2354,7 @@ and failure reaction activities of <a class="reference internal" href="../../../
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-7768843d">
+<div class="need_container docutils container" id="SNCB-64f03eba">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__stop_order_spec">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2343,7 +2402,7 @@ and failure reaction activities of <a class="reference internal" href="../../../
 </section>
 <section id="run-targets">
 <h2>Run targets<a class="headerlink" href="#run-targets" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-20ad260e">
+<div class="need_container docutils container" id="SNCB-0fbf2e33">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__process_state_comm">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2363,7 +2422,7 @@ and failure reaction activities of <a class="reference internal" href="../../../
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/switch_run_target/switch_run_target.py#L19">test_switch_run_target</a><em>; </em><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/rt_running_when_process_exits/rt_running_when_process_exits.py#L19">test_rt_running_when_process_exits</a><em>; </em><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/process_launch_args/process_launch_args.py#L19">test_process_launch_args</a><em>; </em></span></span></div>
+<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/switch_run_target/switch_run_target.py#L19">test_switch_run_target<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/rt_running_when_process_exits/rt_running_when_process_exits.py#L19">test_rt_running_when_process_exits<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/process_launch_args/process_launch_args.py#L19">test_process_launch_args<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em></span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="external_link reference external" href="https://eclipse-score.github.io/score/main/features/lifecycle/requirements/index.html#feat_req__lifecycle__switch_run_targets">feat_req__lifecycle__switch_run_targets</a></span></span></div>
@@ -2394,7 +2453,7 @@ to the launcher.</p></td>
 </section>
 <section id="terminating-processes">
 <h2>Terminating Processes<a class="headerlink" href="#terminating-processes" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-92a1c906">
+<div class="need_container docutils container" id="SNCB-bd486814">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__configurable_timeout">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2440,7 +2499,7 @@ to the launcher.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-e847799a">
+<div class="need_container docutils container" id="SNCB-115ee12b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__time_to_wait_config">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2486,7 +2545,7 @@ SIGKILL is sent. In case “0” is stated, the SIGKILL shall be sent immediatel
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-fbe8cfc1">
+<div class="need_container docutils container" id="SNCB-0526990f">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__launch_manager_shutdown">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2506,7 +2565,7 @@ SIGKILL is sent. In case “0” is stated, the SIGKILL shall be sent immediatel
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/switch_run_target/switch_run_target.py#L19">test_switch_run_target</a><em>; </em></span></span></div>
+<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/switch_run_target/switch_run_target.py#L19">test_switch_run_target<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em></span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="external_link reference external" href="https://eclipse-score.github.io/score/main/features/lifecycle/requirements/index.html#feat_req__lifecycle__terminationn_dependency">feat_req__lifecycle__terminationn_dependency</a></span></span></div>
@@ -2533,7 +2592,7 @@ process in the dependency order.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6a61af52">
+<div class="need_container docutils container" id="SNCB-1eacafac">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__fast_shutdown_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2579,7 +2638,7 @@ without considering the started <a class="reference internal" href="../../../fea
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-053aafbe">
+<div class="need_container docutils container" id="SNCB-270a430e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__launcher_exit_shutdown">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2599,7 +2658,7 @@ without considering the started <a class="reference internal" href="../../../fea
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/lm_shutdown_during_rt_switch/lm_shutdown_during_rt_switch.py#L19">test_lm_shutdown</a><em>; </em><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/lm_shutdown_during_switch_to_off/lm_shutdown_during_switch_to_off.py#L19">test_lm_shutdown</a><em>; </em></span></span></div>
+<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/lm_shutdown_during_rt_switch/lm_shutdown_during_rt_switch.py#L19">test_lm_shutdown<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/lm_shutdown_during_switch_to_off/lm_shutdown_during_switch_to_off.py#L19">test_lm_shutdown<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em></span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="external_link reference external" href="https://eclipse-score.github.io/score/main/features/lifecycle/requirements/index.html#feat_req__lifecycle__terminationn_dependency">feat_req__lifecycle__terminationn_dependency</a></span></span></div>
@@ -2626,7 +2685,7 @@ stopping all the <a class="reference internal" href="../../../features/lifecycle
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-802aed5b">
+<div class="need_container docutils container" id="SNCB-458a53b3">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__shutdown_signal">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2646,7 +2705,7 @@ stopping all the <a class="reference internal" href="../../../features/lifecycle
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/shutdown_signal/shutdown_signal.py#L19">test_shutdown_signal</a><em>; </em></span></span></div>
+<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/shutdown_signal/shutdown_signal.py#L19">test_shutdown_signal<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em></span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="external_link reference external" href="https://eclipse-score.github.io/score/main/features/lifecycle/requirements/index.html#feat_req__lifecycle__terminationn_dependency">feat_req__lifecycle__terminationn_dependency</a></span></span></div>
@@ -2676,7 +2735,7 @@ the process. In case the process does not terminate itself, a SIGKILL shall be s
 </section>
 <section id="monitoring-notification-and-recovery">
 <h2>Monitoring, Notification and Recovery<a class="headerlink" href="#monitoring-notification-and-recovery" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-dad41036">
+<div class="need_container docutils container" id="SNCB-aa2d8b45">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__ext_monitor_notify">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2696,7 +2755,7 @@ the process. In case the process does not terminate itself, a SIGKILL shall be s
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/complex_monitoring/complex_monitoring.py#L19">test_complex_monitoring</a><em>; </em></span></span></div>
+<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/complex_monitoring/complex_monitoring.py#L19">test_complex_monitoring<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em></span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="external_link reference external" href="https://eclipse-score.github.io/score/main/features/lifecycle/requirements/index.html#feat_req__lifecycle__monitor_abnormal_term">feat_req__lifecycle__monitor_abnormal_term</a></span></span></div>
@@ -2723,7 +2782,7 @@ notified on process life status.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-21c8376b">
+<div class="need_container docutils container" id="SNCB-cc208e21">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__configurable_wait_time">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2769,7 +2828,7 @@ that shall elapse before repeating <a class="reference internal" href="../../../
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-1ed94352">
+<div class="need_container docutils container" id="SNCB-8b4677ff">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__monitoring_processes">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2815,7 +2874,7 @@ that shall elapse before repeating <a class="reference internal" href="../../../
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6817a4f4">
+<div class="need_container docutils container" id="SNCB-84a7e438">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__failure_detect">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2835,7 +2894,7 @@ that shall elapse before repeating <a class="reference internal" href="../../../
 </tr>
 <tr class="meta row-even"><td class="meta" colspan="3"><div class="needs_meta_left line-block">
 <div class="line"><span><span><div class="line"><span class="needs_reqtype"><span class="needs_label">reqtype: </span><span class="needs_data">Functional</span></span></div>
-<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/crash_on_startup/crash_on_startup.py#L22">test_crash_on_startup</a><em>; </em><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/process_simple_rep_failure/process_simple_rep_failure.py#L19">test_recovery_action_simple_rep_failure</a><em>; </em><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/8eb6d21932de5a82a6d19439f59ddef2d5816c69/tests/integration/process_complex_rep_failure/process_complex_rep_failure.py#L19">test_recovery_action_complex_rep_failure</a><em>; </em></span></span></div>
+<div class="line"><span class="needs_testlink"><span class="needs_label">testlink: </span><span class="needs_data"><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/crash_on_startup/crash_on_startup.py#L22">test_crash_on_startup<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/process_simple_rep_failure/process_simple_rep_failure.py#L19">test_recovery_action_simple_rep_failure<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em><a class="reference external" href="https://github.com/hskang-amelia/lifecycle/blob/09002136063618938bbaa966fe9e1cedf056996e/tests/integration/process_complex_rep_failure/process_complex_rep_failure.py#L19">test_recovery_action_complex_rep_failure<span class="score-testcase-result score-testcase-result--passed"> (passed)</span></a><em>; </em></span></span></div>
 <div class="line"><span class="needs_version"><span class="needs_label">version: </span>1</span></div>
 </span></span></div>
 <div class="line"><span><div class="line">derived from: <span class="derived_from"><span><a class="external_link reference external" href="https://eclipse-score.github.io/score/main/features/lifecycle/requirements/index.html#feat_req__lifecycle__switch_run_targets">feat_req__lifecycle__switch_run_targets</a></span></span></div>
@@ -2862,7 +2921,7 @@ process launch.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-325c5b82">
+<div class="need_container docutils container" id="SNCB-d1351e7e">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__process_failure_react">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2910,7 +2969,7 @@ stopping the process and starting another process, or triggering <a class="refer
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4ce21c00">
+<div class="need_container docutils container" id="SNCB-97838fc9">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__lm_ext_watchdog_notify">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -2956,7 +3015,7 @@ stopping the process and starting another process, or triggering <a class="refer
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-269970de">
+<div class="need_container docutils container" id="SNCB-7a9e8f14">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__lm_ext_wdg_failed_test">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3002,7 +3061,7 @@ notification if an internal health check failed.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-d0d87ec3">
+<div class="need_container docutils container" id="SNCB-85cc1dba">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__lm_ext_watchdog_cfg">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3051,7 +3110,7 @@ the internal health check executions.</p></td>
 </section>
 <section id="logging">
 <h2>Logging<a class="headerlink" href="#logging" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-0b8dc974">
+<div class="need_container docutils container" id="SNCB-640b4c7d">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__slog2_logging">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3097,7 +3156,7 @@ boot sequence.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-f7cae11a">
+<div class="need_container docutils container" id="SNCB-692e6f70">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__process_logging_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3143,7 +3202,7 @@ boot sequence.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-9145c89f">
+<div class="need_container docutils container" id="SNCB-0d726a15">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__log_timestamp">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3188,7 +3247,7 @@ boot sequence.</p></td>
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-a2c32a44">
+<div class="need_container docutils container" id="SNCB-d28bcc66">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__dag_logging_controlif">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3234,7 +3293,7 @@ in a human readable format, triggered via <a class="reference internal" href="..
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-6e378ad5">
+<div class="need_container docutils container" id="SNCB-5aa4a8c1">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__dependency_visu">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3282,7 +3341,7 @@ in a human readable format, triggered via <a class="reference internal" href="..
 </section>
 <section id="configuration-file">
 <h2>Configuration file<a class="headerlink" href="#configuration-file" title="Link to this heading">#</a></h2>
-<div class="need_container docutils container" id="SNCB-556d7de3">
+<div class="need_container docutils container" id="SNCB-cabef45b">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__modular_config_support">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3327,7 +3386,7 @@ in a human readable format, triggered via <a class="reference internal" href="..
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-5189b66b">
+<div class="need_container docutils container" id="SNCB-1fa7bd3a">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__runtime_config_compat">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3372,7 +3431,7 @@ in a human readable format, triggered via <a class="reference internal" href="..
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-4a1dde7a">
+<div class="need_container docutils container" id="SNCB-015fcdd7">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__central_default_defines">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3417,7 +3476,7 @@ in a human readable format, triggered via <a class="reference internal" href="..
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-653321b0">
+<div class="need_container docutils container" id="SNCB-89301033">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__lazy_check">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -3462,7 +3521,7 @@ in a human readable format, triggered via <a class="reference internal" href="..
 </table>
 </div>
 </div>
-<div class="need_container docutils container" id="SNCB-bbaa96c8">
+<div class="need_container docutils container" id="SNCB-79d8e8a8">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_comp_req table" id="comp_req__launch_man__offline_config_valid">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">

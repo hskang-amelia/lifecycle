@@ -74,7 +74,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Release Note v0.3.0" href="release_note_v_0_3_0.html" />
-    <link rel="prev" title="Release notes" href="index.html" />
+    <link rel="prev" title="Release Note v0.5.0" href="release_note_v_0_5_0.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="0.0.0" />
@@ -174,6 +174,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../module/index.html">
+    Lifecycle Module
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../safety_mgt/index.html">
     Safety Management
   </a>
@@ -186,13 +193,6 @@
   </a>
 </li>
 
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="index.html">
-    Release notes
-  </a>
-</li>
-
             <li class="nav-item dropdown">
                 <button class="btn dropdown-toggle nav-item" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false"
@@ -201,9 +201,16 @@
                 </button>
                 <ul id="pst-nav-more-links" class="dropdown-menu">
                     
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="index.html">
+    Release notes
+  </a>
+</li>
+
+
 <li class=" ">
-  <a class="nav-link dropdown-item nav-internal" href="../verification_report/statistics.html">
-    Verification Statistics
+  <a class="nav-link dropdown-item nav-internal" href="../verification_report/index.html">
+    Verification Report
   </a>
 </li>
 
@@ -347,6 +354,13 @@
 
 
 <li class="nav-item ">
+  <a class="nav-link nav-internal" href="../module/index.html">
+    Lifecycle Module
+  </a>
+</li>
+
+
+<li class="nav-item ">
   <a class="nav-link nav-internal" href="../safety_mgt/index.html">
     Safety Management
   </a>
@@ -368,8 +382,8 @@
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../verification_report/statistics.html">
-    Verification Statistics
+  <a class="nav-link nav-internal" href="../verification_report/index.html">
+    Verification Report
   </a>
 </li>
 
@@ -459,6 +473,9 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Content</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="release_note_v_0_6_1.html">Release Note v0.6.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_note_v_0_6_0.html">Release Note v0.6.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_note_v_0_5_0.html">Release Note v0.5.0</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Release Note v0.4.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release_note_v_0_3_0.html">Release Note v0.3.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release_note_v_0_2_0.html">Release Note v0.2.0</a></li>
@@ -522,7 +539,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="need_container docutils container" id="SNCB-c5aab4b5">
+  <div class="need_container docutils container" id="SNCB-d07d21d5">
 <div class="pst-scrollable-table-container"><table class="need needs_grid_complex needs_layout_score needs_style_none needs_type_document table" id="doc__lifecycle_release_note_v0_4_0">
 <tbody>
 <tr class="head row-odd"><td class="head_left" colspan="2"><div class="needs_head_left line-block">
@@ -583,19 +600,29 @@ being a non-profit and open source organization, can not take over any liability
 <section id="new-features">
 <h3>New Features<a class="headerlink" href="#new-features" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>None</p></li>
+<li><p><strong>Working directory support:</strong> Support the <code class="docutils literal notranslate"><span class="pre">deployment_config/working_dir</span></code> value to set a process working directory. <a class="reference external" href="https://github.com/eclipse-score/lifecycle/pull/356">#356</a></p></li>
 </ul>
 </section>
 <section id="improvements">
 <h3>Improvements<a class="headerlink" href="#improvements" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>None</p></li>
+<li><p><strong>Lifecycle mock for OSS consumers:</strong> Add <code class="docutils literal notranslate"><span class="pre">MwLifeCycleManagerMock</span></code> to allow unit tests to set expectations on <code class="docutils literal notranslate"><span class="pre">report_running()</span></code> and <code class="docutils literal notranslate"><span class="pre">report_shutdown()</span></code> without real IPC. <a class="reference external" href="https://github.com/eclipse-score/lifecycle/pull/391">#391</a></p></li>
+<li><p><strong>CPU affinity up to 64 cores:</strong> Extend the default CPU affinity mask from 32 to 64 cores. <a class="reference external" href="https://github.com/eclipse-score/lifecycle/pull/286">#286</a></p></li>
+<li><p><strong>Internal refactoring:</strong>
+- <strong>Config simplification:</strong> Removes the legacy flattbuffer Launch Manager config. <a class="reference external" href="https://github.com/eclipse-score/lifecycle/pull/409">#409</a>
+- <strong>Remove the internal config adapter:</strong> <a class="reference external" href="https://github.com/eclipse-score/lifecycle/pull/455">#455</a>
+- <strong>Watchdog integration:</strong> Refactor existing watchdog code into <code class="docutils literal notranslate"><span class="pre">ProcessGroupManager</span></code> and replace the custom watchdog OSAL with the baselibs OSAL. <a class="reference external" href="https://github.com/eclipse-score/lifecycle/pull/403">#403</a>
+- Various refactorings to improve code quality and maintainability.</p></li>
+<li><p><strong>Testing and documentation</strong> updates, including QNX integration tests via QEMU. <a class="reference external" href="https://github.com/eclipse-score/lifecycle/pull/328">#328</a></p></li>
 </ul>
 </section>
 <section id="bug-fixes">
 <h3>Bug Fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>None</p></li>
+<li><p>Bug fix: Avoid deadlocks after <code class="docutils literal notranslate"><span class="pre">fork()</span></code>. <a class="reference external" href="https://github.com/eclipse-score/lifecycle/pull/303">#303</a></p></li>
+<li><p>Bug fix: Fix missed restart. <a class="reference external" href="https://github.com/eclipse-score/lifecycle/pull/416">#416</a></p></li>
+<li><p>Bug fix: Lock <code class="docutils literal notranslate"><span class="pre">IdentifierHash</span></code> mutex before every <code class="docutils literal notranslate"><span class="pre">get_registry</span></code> call. <a class="reference external" href="https://github.com/eclipse-score/lifecycle/pull/384">#384</a></p></li>
+<li><p>Bug fix: Add missing read protection. <a class="reference external" href="https://github.com/eclipse-score/lifecycle/pull/501">#501</a></p></li>
 </ul>
 </section>
 <section id="other-changes-by-label">
@@ -651,6 +678,7 @@ being a non-profit and open source organization, can not take over any liability
 </dd>
 </dl>
 </li>
+<li><p><strong>C and Rust ``report_running`` APIs renamed</strong> to match the C++ API. Update callers of the C/Rust APIs. <a class="reference external" href="https://github.com/eclipse-score/lifecycle/pull/318">#318</a></p></li>
 <li><p>Backward compatibility with the previous release is not guaranteed.</p></li>
 </ul>
 <p><em>For any questions or support, please contact the</em> <a class="reference external" href="https://github.com/orgs/eclipse-score/projects/33">Project Team</a> <em>or raise an issue/discussion.</em></p>
@@ -669,12 +697,12 @@ being a non-profit and open source organization, can not take over any liability
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="index.html"
+       href="release_note_v_0_5_0.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Release notes</p>
+        <p class="prev-next-title">Release Note v0.5.0</p>
       </div>
     </a>
     <a class="right-next"

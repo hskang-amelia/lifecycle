@@ -360,6 +360,30 @@
     "url": ""
   },
   {
+    "name": "test_ready_condition_file",
+    "file": "tests/integration/ready_conditions/file_state/exists/ready_condition_file.py",
+    "line": 19,
+    "need": "comp_req__launch_man__path_condition_check",
+    "verify_type": "partially",
+    "result": "passed",
+    "result_text": "",
+    "repo_name": "local_repo",
+    "hash": "",
+    "url": ""
+  },
+  {
+    "name": "test_ready_condition_file_not_existing",
+    "file": "tests/integration/ready_conditions/file_state/not_existing/ready_condition_file_not_existing.py",
+    "line": 19,
+    "need": "comp_req__launch_man__path_condition_check",
+    "verify_type": "partially",
+    "result": "passed",
+    "result_text": "",
+    "repo_name": "local_repo",
+    "hash": "",
+    "url": ""
+  },
+  {
     "name": "test_lm_shutdown",
     "file": "tests/integration/lm_shutdown_during_switch_to_off/lm_shutdown_during_switch_to_off.py",
     "line": 19,
