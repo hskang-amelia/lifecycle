@@ -94,16 +94,18 @@ Result<ControlProvider> ControlProvider::Create(IRunTargetControl* graph) noexce
         return MakeUnexpected(static_cast<ExecErrc>(*setup_get_active_run_target_result.error()));
     }
 
-    const Result<void> setup_activation_result_result = impl->setupActivationResult();
-    if (!setup_activation_result_result.has_value())
-    {
-        return MakeUnexpected(static_cast<ExecErrc>(*setup_activation_result_result.error()));
-    }
-
+    // Offer the mw::com service before registering the graph callback: if offering the service
+    // fails, returning early must not leave `graph_` holding a callback into a destroyed `Impl`.
     const Result<void> offer_service_result = impl->offerService();
     if (!offer_service_result.has_value())
     {
         return MakeUnexpected(static_cast<ExecErrc>(*offer_service_result.error()));
+    }
+
+    const Result<void> setup_activation_result_result = impl->setupActivationResult();
+    if (!setup_activation_result_result.has_value())
+    {
+        return MakeUnexpected(static_cast<ExecErrc>(*setup_activation_result_result.error()));
     }
 
     return ControlProvider{std::move(impl)};
