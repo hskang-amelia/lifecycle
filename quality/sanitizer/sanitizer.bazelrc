@@ -27,24 +27,28 @@ build:asan --@score_cpp_policies//sanitizers/flags:asan=True
 build:asan --platform_suffix=asan
 build:asan --config=with_debug_symbols
 test:asan  --run_under=@score_cpp_policies//sanitizers:wrapper
+test:asan  --test_tag_filters=-no-asan
 
 build:ubsan --features=score_ubsan_clang
 build:ubsan --@score_cpp_policies//sanitizers/flags:ubsan=True
 build:ubsan --platform_suffix=ubsan
 build:ubsan --config=with_debug_symbols
 test:ubsan  --run_under=@score_cpp_policies//sanitizers:wrapper
+test:ubsan  --test_tag_filters=-no-ubsan
 
 build:lsan --features=score_lsan
 build:lsan --@score_cpp_policies//sanitizers/flags:lsan=True
 build:lsan --platform_suffix=lsan
 build:lsan --config=with_debug_symbols
 test:lsan  --run_under=@score_cpp_policies//sanitizers:wrapper
+test:lsan  --test_tag_filters=-no-lsan
 
 build:tsan --features=score_tsan
 build:tsan --@score_cpp_policies//sanitizers/flags:tsan=True
 build:tsan --platform_suffix=tsan
 build:tsan --config=with_debug_symbols
 test:tsan  --run_under=@score_cpp_policies//sanitizers:wrapper
+test:tsan  --test_tag_filters=-no-tsan
 
 # ==============================================================================
 # Composite configs — convenience aliases for common combinations
@@ -52,13 +56,17 @@ test:tsan  --run_under=@score_cpp_policies//sanitizers:wrapper
 # Note on --platform_suffix ordering: each --config=asan/ubsan/lsan sets its own
 # --platform_suffix. The final --platform_suffix below overrides all of them to a
 # single canonical suffix. Bazel applies the last value of a repeatable flag, so
-# this override is intentional and stable.
+# this override is intentional and stable. --test_tag_filters works the same way
+# (last value wins), so each composite config repeats the union of its opt-out
+# tags instead of relying on the per-sanitizer filters above.
 
 build:asan_ubsan_lsan --config=asan
 build:asan_ubsan_lsan --config=ubsan
 build:asan_ubsan_lsan --config=lsan
 build:asan_ubsan_lsan --platform_suffix=asan_ubsan_lsan
+test:asan_ubsan_lsan --test_tag_filters=-no-asan,-no-ubsan,-no-lsan
 
 build:tsan_ubsan --config=tsan
 build:tsan_ubsan --config=ubsan
 build:tsan_ubsan --platform_suffix=tsan_ubsan
+test:tsan_ubsan --test_tag_filters=-no-tsan,-no-ubsan
