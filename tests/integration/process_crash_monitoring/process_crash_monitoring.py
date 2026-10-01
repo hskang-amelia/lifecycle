@@ -18,6 +18,7 @@ from attribute_plugin import add_test_properties
 
 @add_test_properties(
     fully_verifies=["feat_req__lifecycle__monitor_abnormal_term"],
+    partially_verifies=["comp_req__launch_man__recovery_switch_rt"],
     test_type="requirements-based",
     derivation_technique="requirements-analysis",
 )
