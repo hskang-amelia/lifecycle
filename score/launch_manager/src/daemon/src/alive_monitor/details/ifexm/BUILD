@@ -104,3 +104,12 @@ lm_cc_test(
         "@googletest//:gtest_main",
     ],
 )
+
+lm_cc_test(
+    name = "supervision_handle_UT",
+    srcs = ["supervision_handle_UT.cpp"],
+    deps = [
+        ":supervision_handle",
+        "@googletest//:gtest_main",
+    ],
+)

@@ -61,3 +61,12 @@ cc_library(
         "//score/launch_manager/src/daemon/src/alive_monitor/details/timers:timers_os_clock",
     ],
 )
+
+lm_cc_test(
+    name = "TimeSortingBuffer_UT",
+    srcs = ["TimeSortingBuffer_UT.cpp"],
+    deps = [
+        ":time_sorting_buffer",
+        "@googletest//:gtest_main",
+    ],
+)
